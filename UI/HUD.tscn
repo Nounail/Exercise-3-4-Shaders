@@ -1,7 +1,9 @@
-[gd_scene load_steps=5 format=3 uid="uid://drxwrc1b5f0hw"]
+[gd_scene load_steps=9 format=3 uid="uid://drxwrc1b5f0hw"]
 
 [ext_resource type="Script" path="res://UI/HUD.gd" id="1"]
-[ext_resource type="FontFile" uid="uid://bhn4p60qg2sbj" path="res://Assets/Orbitron Black.ttf" id="2"]
+[ext_resource type="FontFile" uid="uid://dxrla4tls1f27" path="res://Assets/Orbitron Black.ttf" id="2"]
+[ext_resource type="Shader" path="res://UI/HUD.gdshader" id="3_y1wkx"]
+[ext_resource type="Script" path="res://UI/Fever.gd" id="4_5vftb"]
 
 [sub_resource type="FontFile" id="1"]
 subpixel_positioning = 0
@@ -26,6 +28,20 @@ cache/0/16/0/underline_position = 0.0
 cache/0/16/0/underline_thickness = 0.0
 cache/0/16/0/scale = 1.0
 cache/0/16/0/kerning_overrides/16/0 = Vector2(0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pbo6l"]
+shader = ExtResource("3_y1wkx")
+shader_parameter/fireMovement = Vector2(-0.01, -0.5)
+shader_parameter/distortionMovement = Vector2(-0.01, -0.3)
+shader_parameter/normalStrength = 40.0
+shader_parameter/distortionStrength = 0.1
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ki1vp"]
+shader = ExtResource("3_y1wkx")
+shader_parameter/fireMovement = Vector2(-0.01, -0.5)
+shader_parameter/distortionMovement = Vector2(-0.01, -0.3)
+shader_parameter/normalStrength = 40.0
+shader_parameter/distortionStrength = 0.1
 
 [node name="HUD" type="Control"]
 process_mode = 3
@@ -84,6 +100,7 @@ offset_bottom = 45.0
 color = Color(0.203922, 0.227451, 0.25098, 1)
 
 [node name="Fever" type="ProgressBar" parent="."]
+material = SubResource("ShaderMaterial_pbo6l")
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -94,8 +111,10 @@ offset_right = 200.0
 offset_bottom = 44.0
 grow_horizontal = 2
 show_percentage = false
+script = ExtResource("4_5vftb")
 
 [node name="Indicator_Container" type="Control" parent="."]
+material = SubResource("ShaderMaterial_ki1vp")
 anchors_preset = 0
 anchor_right = 1.0
 anchor_bottom = 1.0

@@ -4,11 +4,13 @@ func start_fever():
 	fever()
 	$Timer.start()
 
-func _on_Timer_timeout():
-	if Global.feverish:
-		fever()
-		$Timer.start()
-
+func start_fever():
+	fever()
+	$Timer.start()
+	var fever_indicator = get_node_or_null("/root/Game/UI/HUD/Fever")
+	if fever_indicator != null:
+		fever_indicator.use_parent_material = false
+		
 func fever():
 	var ball_container = get_node_or_null("/root/Game/Ball_Container")
 	if ball_container != null:

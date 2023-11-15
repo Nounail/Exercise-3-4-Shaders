@@ -1,5 +1,8 @@
 extends RigidBody2D
 
+var Global = 1
+var Levels = 1
+
 var min_speed = 100.0
 var max_speed = 600.0
 var accelerate = false
